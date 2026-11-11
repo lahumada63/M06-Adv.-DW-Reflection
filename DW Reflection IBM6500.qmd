@@ -106,3 +106,5 @@ The results show the average clicks and impressions without having to calculate 
 ## Appendix
 
 [Git Repo](https://github.com/lahumada63/M06-Adv.-DW-Reflection.git)
+
+[Git Pages](https://lahumada63.github.io/M06-Adv.-DW-Reflection/)
