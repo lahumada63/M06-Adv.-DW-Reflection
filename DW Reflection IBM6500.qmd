@@ -102,3 +102,7 @@ performance |>
 ```
 
 The results show the average clicks and impressions without having to calculate each metric separately.
+
+## Appendix
+
+[Git Repo](https://github.com/lahumada63/M06-Adv.-DW-Reflection.git)
