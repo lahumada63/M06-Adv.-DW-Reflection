@@ -1,0 +1,104 @@
+---
+title: "M06 Reflection – Advanced Data Wrangling"
+author: "Luis Ahumada"
+date: today
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 4
+    number-sections: true
+    code-link: true
+    code-fold: true
+    embed-resources: true
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+---
+
+## 1. Impression of Revealjs Presentation
+
+**Prompt: What is your impression of the Reveal.js presentation? Describe its capabilities, strengths, and weaknesses compared with PowerPoint.**
+
+After working with Reveal.js for the first time, I can see how useful it can be, especially when presenting marketing analytics projects. What stood out to me was being able to create an entire presentation through Quarto instead of manually building each slide in PowerPoint. By using code, I can build a whole presentation deck rather than going page by page on powerpoint.
+
+One thing I liked was how easily I could organize the presentation using headings, bullet points, and different formatting options. I also liked that I could include R code to generate charts and tables directly in the presentation. This makes it easier to update information without having to recreate visuals every time the data changes.
+
+Compared with PowerPoint, I think Reveal.js is better suited for presentations that involve data analysis and coding. But PowerPoint is still easier when it comes to customizing the appearance of slides. With Reveal.js, even making small design changes can require additional coding or adjustments to the YAML creating some more work, which could be difficult if we are in a tine crunch.
+
+Overall, I enjoyed learning how to use Revealjs. While there is definitely a learning curve, I can see myself using it for future projects, especially when I need to present analytical findings in a more organized and reproducible way.
+
+## 1. Revealjs Presentation
+
+**Prompt: Provide a link to your published Reveal.js presentation. Briefly describe what the presentation is about and explain what you learned from the experience.**
+
+For this assignment, I created a Reveal.js presentation based on my section of the MSDM Client Engagement Project (CEP) with the Restaurant at Kellogg Ranch (RKR). The presentation focuses on Analytics Objective 3, which looks at Facebook content performance and its potential relationship with restaurant reservations.
+
+The presentation covers the business problem, relevant consumer behavior theory, available data, and the analytical methods that could be used to evaluate Facebook performance. I also included a reproducible table and chart using R. For this practice assignment, I used simulated data to demonstrate how visualizations can be incorporated into a presentation without using actual client data.
+
+**Published Presentation:** [Facebook Content and Reservations Analysis](https://01a1c96f-4ba0-33b2-9206-1c036194c0f3.share.connect.posit.cloud)
+
+One of the biggest things I learned from this experience was how to create and publish a presentation directly from Quarto. I was already familiar with creating HTML reports, but building an actual presentation was a new experience. I also learned how to connect my GitHub repository to Posit Connect Cloud to publish my slides online.
+
+The publishing process was probably the most challenging part. I ran into issues with account authorization and missing dependencies, which required additional troubleshooting in RStudio. However, working through those issues helped me better understand how Quarto, GitHub, and Posit Connect Cloud work together. I found this activity valuable because it showed me another way to present my analytical work. I can see myself using Reveal.js for future projects, especially when working with data that may need to be updated regularly.
+
+## 3. Advanced Data Wrangling Functions
+
+**Prompt: Select three functions from different categories. Explain when to use them and provide a coding example with output for each function.**
+
+### 3.1 row_number() — Ranking
+
+The `row_number()` function ranks observations based on their values. I could use this to rank email campaigns by the number of clicks they generate.
+
+```{r}
+#| message: false
+
+library(dplyr)
+
+campaigns <- tibble(
+  Campaign = c("A", "B", "C"),
+  Clicks = c(150, 250, 100)
+)
+
+campaigns |>
+  mutate(Rank = row_number(desc(Clicks)))
+```
+
+Email B ranks first because it generated the most clicks.
+
+### 3.2 left_join() — Relational Data
+
+The `left_join()` function combines two datasets using a shared variable. For my CEP project, I could use it to connect Facebook engagement data with restaurant reservations.
+
+```{r}
+facebook <- tibble(
+  Date = c("Nov 1", "Nov 2"),
+  Engagements = c(100, 150)
+)
+
+reservations <- tibble(
+  Date = c("Nov 1", "Nov 2"),
+  Reservations = c(15, 20)
+)
+
+left_join(facebook, reservations, by = "Date")
+```
+
+The results combine both metrics into one table, making it easier to compare Facebook engagement with restaurant reservations.
+
+### 3.3 across() — Column-Wise Operations
+
+The `across()` function applies the same calculation to multiple columns. I could use it to quickly calculate averages when reviewing marketing performance.
+
+```{r}
+performance <- tibble(
+  Clicks = c(50, 100),
+  Impressions = c(1000, 2000)
+)
+
+performance |>
+  summarize(across(everything(), mean))
+```
+
+The results show the average clicks and impressions without having to calculate each metric separately.
