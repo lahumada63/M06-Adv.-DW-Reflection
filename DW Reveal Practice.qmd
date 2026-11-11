@@ -1,0 +1,215 @@
+---
+title: "Facebook Content and Reservations Analysis"
+subtitle: "Restaurant at Kellogg Ranch"
+author: "Luis Ahumada"
+institute: "MSDM CEP | Cal Poly Pomona"
+date: today
+format:
+  revealjs:
+    theme: serif
+    width: 1600
+    height: 900
+    footer: "RKR | Analytics Objective 3"
+    transition: slide
+    transition-speed: default
+    incremental: false
+    toc: true
+    toc-depth: 1
+    slide-number: true
+    scrollable: true
+    smaller: true
+    code-fold: false
+    code-overflow: wrap
+    number-sections: false
+    embed-resources: true
+editor: visual
+execute:
+  echo: false
+  freeze: auto
+---
+
+# Introduction
+
+## Project Overview
+
+The Restaurant at Kellogg Ranch (RKR) seeks to better understand how its Facebook marketing efforts can support restaurant awareness and reservations.
+
+## Analytics Objective 3
+
+Analyze Facebook content performance and its potential relationship with restaurant reservations.
+
+::: incremental
+- Evaluate Facebook content performance.
+- Identify audience engagement patterns.
+- Develop data-driven marketing recommendations.
+:::
+
+## Importance of the Analysis
+
+Understanding Facebook content performance can help RKR:
+
+::: incremental
+- Identify content that resonates with its audience.
+- Improve its social media marketing strategy.
+- Allocate marketing resources more effectively.
+- Support efforts to increase restaurant reservations.
+:::
+
+# Literature Review
+
+## Theory of Planned Behavior
+
+The Theory of Planned Behavior (Ajzen, 1991) explains how behavioral intentions are influenced by three factors:
+
+- **Attitudes:** Consumers' perceptions of dining at RKR.
+- **Subjective Norms:** Social influences and recommendations.
+- **Perceived Behavioral Control:** How easily consumers can make a reservation.
+
+## 
+
+## Data Availability
+
+::::: columns
+::: {.column width="50%"}
+### Available Data
+
+- Facebook post performance
+- Facebook profile performance
+- Impressions
+- Engagements
+:::
+
+::: {.column width="50%"}
+### Additional Data Needed
+
+- OpenTable reservations
+- Reservation dates
+- Reservation referral sources
+- Website traffic
+:::
+:::::
+
+::: notes
+Reservation data is needed to examine the relationship between Facebook marketing and actual reservations.
+:::
+
+# Methods
+
+## Data and Sampling
+
+- Data source: Collins College Facebook analytics
+- Study period: April – October 2026
+- Unit of analysis: Individual RKR-related Facebook posts
+- Proposed additional source: OpenTable reservation data
+
+## Data Wrangling
+
+::: incremental
+- Identify RKR-related Facebook posts.
+- Examine missing values and duplicate observations.
+- Categorize posts by content type.
+- Calculate engagement metrics.
+- Prepare datasets for further analysis.
+:::
+
+## Analytics Methods
+
+- Descriptive statistics
+- Content category comparisons
+- Engagement rate analysis
+- Content performance rankings
+- Correlation analysis, pending reservation data
+
+## Proposed Analytical Measures
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+
+measures <- tibble(
+  Metric = c(
+    "Impressions",
+    "Engagements",
+    "Engagement Rate",
+    "Content Type",
+    "Reservations"
+  ),
+  Purpose = c(
+    "Measure content visibility",
+    "Measure audience interaction",
+    "Evaluate content effectiveness",
+    "Compare marketing themes",
+    "Measure dining demand"
+  )
+)
+
+knitr::kable(measures)
+```
+
+# Example Analysis
+
+## Facebook Engagement by Content Type (Simulated Data for Practice)
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+
+facebook <- tibble(
+  Content = c("Menu", "Events", "Student Chefs", "Promotions"),
+  Engagements = c(120, 85, 150, 110)
+)
+
+ggplot(facebook, aes(x = Content, y = Engagements, fill = Content)) +
+  geom_col() +
+  labs(
+    title = "Facebook Engagement by Content Type",
+    x = "Content Type",
+    y = "Engagements",
+    caption = "Simulated data for demonstration purposes"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+# Conclusion
+
+## Key Takeaways
+
+::: incremental
+- Facebook analytics can help identify content that resonates with the RKR audience.
+- Content performance can inform future marketing decisions.
+- Reservation data is needed to evaluate the relationship between engagement and reservations.
+:::
+
+## Next Steps
+
+- Analyze actual Facebook performance data.
+- Obtain OpenTable reservation data.
+- Evaluate relationships between marketing activities and reservations.
+- Develop evidence-based recommendations.
+
+::: notes
+The chart presented in this presentation uses simulated data for demonstration purposes only.
+:::
+
+# References
+
+## References
+
+- Ajzen, I. (1991). The theory of planned behavior. Organizational Behavior and Human Decision Processes, 50(2), 179–211.
+- Jung, J. Advanced Wrangling with dplyr.
+- Collins College Facebook Analytics (2026).
+
+# Appendix
+
+## Additional Resources
+
+- [Restaurant at Kellogg Ranch](https://www.cpp.edu/collins/rkr/)
+- [Advanced Data Wrangling Lecture](https://jmjung.quarto.pub/m06-advanced-wrangling-with-dplyr/)
+- [Quarto Reveal.js Documentation](https://quarto.org/docs/presentations/revealjs/)
